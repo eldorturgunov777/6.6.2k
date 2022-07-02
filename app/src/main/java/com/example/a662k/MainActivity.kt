@@ -23,8 +23,12 @@ class MainActivity : AppCompatActivity() {
             VolleyHttp.API_LIST_POST,
             VolleyHttp.paramsEmpty(),
             object : VolleyHandler {
-                override fun onSuccess(response: String?) {}
-                override fun onError(error: String?) {}
+                override fun onSuccess(response: String?) {
+                    Log.d("@@@onResponse ", response!!);
+                }
+                override fun onError(error: String?) {
+                    Log.d("@@@onErrorResponse ", error!!);
+                }
             })
     }
 
@@ -33,8 +37,12 @@ class MainActivity : AppCompatActivity() {
             VolleyHttp.API_CREATE_POST,
             VolleyHttp.paramsCreate(poster),
             object : VolleyHandler {
-                override fun onSuccess(response: String?) {}
-                override fun onError(error: String?) {}
+                override fun onSuccess(response: String?) {
+                    Log.d("@@@onResponse ", response!!);
+                }
+                override fun onError(error: String?) {
+                    Log.d("@@@onErrorResponse ", error!!);
+                }
             })
     }
 
@@ -44,10 +52,10 @@ class MainActivity : AppCompatActivity() {
             VolleyHttp.paramsUpdate(poster),
             object : VolleyHandler {
                 override fun onSuccess(response: String?) {
-                    Log.d("@@@onResponse ", response.toString());
+                    Log.d("@@@onResponse ", response!!);
                 }
                 override fun onError(error: String?) {
-                    Log.d("@@@onErrorResponse ", error.toString());
+                    Log.d("@@@onErrorResponse ", error!!);
                 }
             })
     }
@@ -55,10 +63,10 @@ class MainActivity : AppCompatActivity() {
     private fun delete() {
         VolleyHttp.del(VolleyHttp.API_DELETE_POST + poster.id, object : VolleyHandler {
             override fun onSuccess(response: String?) {
-                Log.d("@@@onResponse ", response.toString());
+                Log.d("@@@onResponse ", response!!);
             }
             override fun onError(error: String?) {
-                Log.d("@@@onErrorResponse ", error.toString());
+                Log.d("@@@onErrorResponse ", error!!);
             }
         })
     }
