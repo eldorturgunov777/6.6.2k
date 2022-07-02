@@ -1,6 +1,7 @@
 package com.example.a662k
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -42,15 +43,23 @@ class MainActivity : AppCompatActivity() {
             VolleyHttp.API_UPDATE_POST + poster.id,
             VolleyHttp.paramsUpdate(poster),
             object : VolleyHandler {
-                override fun onSuccess(response: String?) {}
-                override fun onError(error: String?) {}
+                override fun onSuccess(response: String?) {
+                    Log.d("@@@onResponse ", response.toString());
+                }
+                override fun onError(error: String?) {
+                    Log.d("@@@onErrorResponse ", error.toString());
+                }
             })
     }
 
     private fun delete() {
         VolleyHttp.del(VolleyHttp.API_DELETE_POST + poster.id, object : VolleyHandler {
-            override fun onSuccess(response: String?) {}
-            override fun onError(error: String?) {}
+            override fun onSuccess(response: String?) {
+                Log.d("@@@onResponse ", response.toString());
+            }
+            override fun onError(error: String?) {
+                Log.d("@@@onErrorResponse ", error.toString());
+            }
         })
     }
 }
